@@ -10,5 +10,6 @@ namespace RevizeOzugucer.DataAccess.Concrete.EntityFramework
     public class EFONSurucuDal : EFEntityRepositoryBase<ONSurucu, ONContext>, IONSurucuDal
     {
 
+
     }
 }
