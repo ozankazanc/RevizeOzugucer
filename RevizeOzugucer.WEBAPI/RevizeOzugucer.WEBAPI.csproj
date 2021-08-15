@@ -1,0 +1,15 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\RevizeOzugucer.Business\RevizeOzugucer.Business.csproj" />
+    <ProjectReference Include="..\RevizeOzugucer.Core\RevizeOzugucer.Core.csproj" />
+    <ProjectReference Include="..\RevizeOzugucer.DataAccess\RevizeOzugucer.DataAccess.csproj" />
+    <ProjectReference Include="..\RevizeOzugucer.Entities\RevizeOzugucer.Entities.csproj" />
+  </ItemGroup>
+
+
+</Project>

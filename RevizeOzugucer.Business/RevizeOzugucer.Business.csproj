@@ -1,0 +1,19 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Autofac" Version="6.2.0" />
+    <PackageReference Include="Autofac.Extras.DynamicProxy" Version="6.0.0" />
+    <PackageReference Include="FluentValidation" Version="10.0.4" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\RevizeOzugucer.Core\RevizeOzugucer.Core.csproj" />
+    <ProjectReference Include="..\RevizeOzugucer.DataAccess\RevizeOzugucer.DataAccess.csproj" />
+    <ProjectReference Include="..\RevizeOzugucer.Entities\RevizeOzugucer.Entities.csproj" />
+  </ItemGroup>
+
+</Project>

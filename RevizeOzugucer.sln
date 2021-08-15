@@ -1,0 +1,55 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30804.86
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RevizeOzugucer.Entities", "RevizeOzugucer.Entities\RevizeOzugucer.Entities.csproj", "{02B1F415-A98C-4D58-9CC0-AC672B3111F3}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RevizeOzugucer.Core", "RevizeOzugucer.Core\RevizeOzugucer.Core.csproj", "{34C2F004-DAC1-4F30-A172-4F52E12C5F9E}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RevizeOzugucer.DataAccess", "RevizeOzugucer.DataAccess\RevizeOzugucer.DataAccess.csproj", "{3CA7614F-CF67-4BF1-BFBC-311C82AADDDA}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RevizeOzugucer.Business", "RevizeOzugucer.Business\RevizeOzugucer.Business.csproj", "{E33C1DFB-6808-4F92-84E8-F58B27790667}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RevizeOzugucer.WEBAPI", "RevizeOzugucer.WEBAPI\RevizeOzugucer.WEBAPI.csproj", "{70A52989-4842-481F-BB99-141959B84009}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RevizeOzugucer.WEBAPIS", "RevizeOzugucer.WEBAPIS\RevizeOzugucer.WEBAPIS.csproj", "{1563E2BD-ED50-4DDE-BFE6-C08C399F5FE8}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{02B1F415-A98C-4D58-9CC0-AC672B3111F3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{02B1F415-A98C-4D58-9CC0-AC672B3111F3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{02B1F415-A98C-4D58-9CC0-AC672B3111F3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{02B1F415-A98C-4D58-9CC0-AC672B3111F3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{34C2F004-DAC1-4F30-A172-4F52E12C5F9E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{34C2F004-DAC1-4F30-A172-4F52E12C5F9E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{34C2F004-DAC1-4F30-A172-4F52E12C5F9E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{34C2F004-DAC1-4F30-A172-4F52E12C5F9E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3CA7614F-CF67-4BF1-BFBC-311C82AADDDA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3CA7614F-CF67-4BF1-BFBC-311C82AADDDA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3CA7614F-CF67-4BF1-BFBC-311C82AADDDA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3CA7614F-CF67-4BF1-BFBC-311C82AADDDA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E33C1DFB-6808-4F92-84E8-F58B27790667}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E33C1DFB-6808-4F92-84E8-F58B27790667}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E33C1DFB-6808-4F92-84E8-F58B27790667}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E33C1DFB-6808-4F92-84E8-F58B27790667}.Release|Any CPU.Build.0 = Release|Any CPU
+		{70A52989-4842-481F-BB99-141959B84009}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{70A52989-4842-481F-BB99-141959B84009}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{70A52989-4842-481F-BB99-141959B84009}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{70A52989-4842-481F-BB99-141959B84009}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1563E2BD-ED50-4DDE-BFE6-C08C399F5FE8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1563E2BD-ED50-4DDE-BFE6-C08C399F5FE8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1563E2BD-ED50-4DDE-BFE6-C08C399F5FE8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1563E2BD-ED50-4DDE-BFE6-C08C399F5FE8}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {3964B478-40F6-40FC-B19E-7C51E646FCB3}
+	EndGlobalSection
+EndGlobal
