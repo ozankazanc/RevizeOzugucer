@@ -11,7 +11,7 @@ namespace RevizeOzugucer.Business.ValidationRules.FluentValidation
         public IrsaliyeValidator()
         {
             //RuleFor(p => p.UnitPrice).GreaterThanOrEqualTo(0);
-            RuleFor(p => p.PlakaNo).NotEmpty();
+            RuleFor(p => p.PlakaId).NotEmpty();
             RuleFor(p => p.SurucuId).NotEmpty();
 
         }

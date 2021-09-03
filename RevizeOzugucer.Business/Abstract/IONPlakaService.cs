@@ -17,5 +17,6 @@ namespace RevizeOzugucer.Business.Abstract
         IResult Add(ONPlaka plaka);
         IResult Update(ONPlaka plaka);
         IResult Delete(int id);
+        IDataResult<int> GetLastId();
     }
 }

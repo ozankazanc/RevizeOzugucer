@@ -8,5 +8,6 @@ namespace RevizeOzugucer.Entities.Dtos
     public class IrsaliyeAndDetayDto : ONIrsaliye
     {
         public List<ONIrsaliyeDetay> listIrsaliyeDetay { get; set; }
+        public string Plaka { get; set; }
     }
 }

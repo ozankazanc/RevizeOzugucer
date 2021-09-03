@@ -11,7 +11,7 @@ namespace RevizeOzugucer.Entities.Concrete
         [Key]
         public int IrsaliyeId { get; set; }
         public int SurucuId { get; set; }
-        public string PlakaNo { get; set; }
+        public int PlakaId { get; set; }
         public string HesapNo { get; set; }
         public string VergiDairesi { get; set; }
         public DateTime KayitTarihi { get; set; } = DateTime.Now;

@@ -16,11 +16,13 @@ namespace RevizeOzugucer.Business.Concrete
     {
         private IONIrsaliyeDal _irsaliyeDal;
         private IONIrsaliyeDetayService _irsaliyeDetayService;
+        private IONPlakaService _plakaService;
 
-        public ONIrsaliyeManager(IONIrsaliyeDal irsaliyeDal, IONIrsaliyeDetayService irsaliyeDetayService)
+        public ONIrsaliyeManager(IONIrsaliyeDal irsaliyeDal, IONIrsaliyeDetayService irsaliyeDetayService, IONPlakaService plakaService)
         {
             _irsaliyeDal = irsaliyeDal;
             _irsaliyeDetayService = irsaliyeDetayService;
+            _plakaService = plakaService;
         }
 
         public IResult Add(ONIrsaliye irsaliye)
@@ -33,17 +35,29 @@ namespace RevizeOzugucer.Business.Concrete
         [TransactionScopeAspect]
         public IResult AddIrsaliyeAndIrsaliyeDetay(IrsaliyeAndDetayDto irsaliyeAndDetayDto)
         {
+            //plaka tanımlı değilse kaydet.
+            if (_plakaService.GetByPlakaArac(irsaliyeAndDetayDto.Plaka).Data == null)
+            {
+                ONPlaka plaka = new ONPlaka
+                {
+                    PlakaArac = irsaliyeAndDetayDto.Plaka
+                };
+
+                _plakaService.Add(plaka);
+            }
+
             ONIrsaliye irsaliye = new ONIrsaliye
             {
                 IrsaliyeId = irsaliyeAndDetayDto.IrsaliyeId,
                 SurucuId = irsaliyeAndDetayDto.SurucuId,
                 HesapNo = irsaliyeAndDetayDto.HesapNo,
                 VergiDairesi = irsaliyeAndDetayDto.VergiDairesi,
-                PlakaNo = irsaliyeAndDetayDto.PlakaNo,
+                PlakaId = _plakaService.GetLastId().Data,
                 KayitTarihi = irsaliyeAndDetayDto.KayitTarihi,
                 DegistirmeTarihi = irsaliyeAndDetayDto.DegistirmeTarihi,
                 Sil = irsaliyeAndDetayDto.Sil
             };
+
 
             _irsaliyeDal.Add(irsaliye);
 
@@ -99,17 +113,19 @@ namespace RevizeOzugucer.Business.Concrete
 
         public IDataResult<List<string>> GetAllPlakas()
         {
-            var result = _irsaliyeDal.GetAll(x => x.Sil == false);
+            //var result = _irsaliyeDal.GetAll(x => x.Sil == false);
 
-            if (result != null)
-            {
-                var plakasGrp = (from plakas in result
-                                 group plakas by plakas.PlakaNo into plakas
-                                 select new { PlakaNo = plakas.Key })
-                                 .Select(x => (string)x.PlakaNo).ToList();
+            //if (result != null)
+            //{
+            //    var plakasGrp = (from plakas in result
+            //                     group plakas by plakas.PlakaNo into plakas
+            //                     select new { PlakaNo = plakas.Key })
+            //                     .Select(x => (string)x.PlakaNo).ToList();
 
-                return new SuccessDataResult<List<string>>(plakasGrp, Messages.Irsaliye.IrsaliyeGetPlakas);
-            }
+            //    return new SuccessDataResult<List<string>>(plakasGrp, Messages.Irsaliye.IrsaliyeGetPlakas);
+            //}
+            //return new ErrorDataResult<List<string>>(null, Messages.Irsaliye.IrsaliyePlakasNotFound);
+           
             return new ErrorDataResult<List<string>>(null, Messages.Irsaliye.IrsaliyePlakasNotFound);
         }
 

@@ -90,5 +90,10 @@ namespace RevizeOzugucer.Business.Concrete
 
             return new SuccessResult(Messages.Plaka.PlakaAdded);
         }
+
+        public IDataResult<int> GetLastId()
+        {
+            return new SuccessDataResult<int>(_plakaDal.GetAll().LastOrDefault().PlakaId, Messages.Plaka.IrsaliyeGetLastId);
+        }
     }
 }

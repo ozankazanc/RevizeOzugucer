@@ -53,6 +53,7 @@ namespace RevizeOzugucer.Business.Constant
             public static string PlakaGetAll =  "Plakalar getirildi.";
             public static string PlakaGet =     "Plaka getirildi.";
             public static string PlakaNotFound ="Plaka bulunamadı.";
+            public static string IrsaliyeGetLastId = "Son Plaka Id getirildi.";
         }
     }
 }
