@@ -31,7 +31,7 @@ namespace RevizeOzugucer.WEBAPIS.Controllers
             Thread.Sleep(1000);
 
             var result = _irsaliyeService.GetAll();
-            if (result.Success)
+            if (result.IsSuccess)
             {
                 return Ok(result);
             }
@@ -47,7 +47,7 @@ namespace RevizeOzugucer.WEBAPIS.Controllers
             Thread.Sleep(1000);
 
             var result = _irsaliyeService.GetAllDeleted();
-            if (result.Success)
+            if (result.IsSuccess)
             {
                 return Ok(result);
             }
@@ -64,7 +64,7 @@ namespace RevizeOzugucer.WEBAPIS.Controllers
             Thread.Sleep(1000);
 
             var result = _irsaliyeService.GetAllNonDeleted();
-            if (result.Success)
+            if (result.IsSuccess)
             {
                 return Ok(result);
             }
@@ -78,7 +78,7 @@ namespace RevizeOzugucer.WEBAPIS.Controllers
             Thread.Sleep(1000);
 
             var result = _irsaliyeService.GetAllPlakas();
-            if (result.Success)
+            if (result.IsSuccess)
             {
                 return Ok(result);
             }
@@ -90,7 +90,7 @@ namespace RevizeOzugucer.WEBAPIS.Controllers
         public IActionResult GetById(int id)
         {
             var result = _irsaliyeService.GetByIrsaliyeId(id);
-            if (result.Success)
+            if (result.IsSuccess)
             {
                 return Ok(result);
             }
@@ -102,7 +102,7 @@ namespace RevizeOzugucer.WEBAPIS.Controllers
         public IActionResult GetLastId(int id)
         {
             var result = _irsaliyeService.GetLastId();
-            if (result.Success)
+            if (result.IsSuccess)
             {
                 return Ok(result);
             }
@@ -114,7 +114,7 @@ namespace RevizeOzugucer.WEBAPIS.Controllers
         public IActionResult Add(ONIrsaliye irsaliye)
         {
             var result = _irsaliyeService.Add(irsaliye);
-            if (result.Success)
+            if (result.IsSuccess)
             {
                 return Ok(result);
             }
@@ -125,7 +125,7 @@ namespace RevizeOzugucer.WEBAPIS.Controllers
         public IActionResult AddIrsaliyeAndIrsaliyeDetay(IrsaliyeAndDetayDto irsaliyeAndDetayDto)
         {
             var result = _irsaliyeService.AddIrsaliyeAndIrsaliyeDetay(irsaliyeAndDetayDto);
-            if (result.Success)
+            if (result.IsSuccess)
             {
                 return Ok(result);
             }
@@ -136,7 +136,7 @@ namespace RevizeOzugucer.WEBAPIS.Controllers
         public IActionResult Delete(int id)
         {
             var result = _irsaliyeService.Delete(id);
-            if (result.Success)
+            if (result.IsSuccess)
             {
                 return Ok(result);
             }
@@ -147,7 +147,7 @@ namespace RevizeOzugucer.WEBAPIS.Controllers
         public IActionResult Update(ONIrsaliye irsaliye)
         {
             var result = _irsaliyeService.Update(irsaliye);
-            if (result.Success)
+            if (result.IsSuccess)
             {
                 return Ok(result);
             }

@@ -38,7 +38,7 @@ namespace RevizeOzugucer.Business.Concrete
             result.Data.Sil = true;
             _surucuDal.Update(result.Data);
 
-            return new SuccessResult(Messages.Surucu.SurucuUpdated);
+            return new SuccessResult(Messages.Plaka.PlakaDeleted);
         }
 
         public IDataResult<List<ONSurucu>> GetAll()
@@ -49,7 +49,6 @@ namespace RevizeOzugucer.Business.Concrete
         public IDataResult<List<ONSurucu>> GetAllDeleted()
         {
             return new SuccessDataResult<List<ONSurucu>>(_surucuDal.GetAll(x=>x.Sil==true), Messages.Surucu.SurucuGetAll);
-
         }
 
         public IDataResult<List<ONSurucu>> GetAllNonDeleted()

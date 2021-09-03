@@ -10,14 +10,14 @@ namespace RevizeOzugucer.Core.Utilities.Results
         //Get yani readonly olan property'ler ancak constructor'da set edilebilir.
         public Result(bool success)
         {
-            Success = success;
+            IsSuccess = success;
         }
         public Result(bool success, string message):this(success)
         {
             Message = message;
         }
 
-        public bool Success { get; }
+        public bool IsSuccess { get; }
 
         public string Message { get; }
 

@@ -28,6 +28,9 @@ namespace RevizeOzugucer.Business.DependencyResolvers.Autofac
             builder.RegisterType<ONIrsaliyeDetayManager>().As<IONIrsaliyeDetayService>().SingleInstance();
             builder.RegisterType<EFONIrsaliyeDetayDal>().As<IONIrsaliyeDetayDal>().SingleInstance();
 
+            builder.RegisterType<ONPlakaManager>().As<IONPlakaService>().SingleInstance();
+            builder.RegisterType<EFONPlakaDal>().As<IONPlakaDal>().SingleInstance();
+
             var assembly = System.Reflection.Assembly.GetExecutingAssembly();
 
             builder.RegisterAssemblyTypes(assembly).AsImplementedInterfaces()

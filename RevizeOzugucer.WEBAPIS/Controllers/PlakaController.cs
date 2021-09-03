@@ -11,25 +11,20 @@ namespace RevizeOzugucer.WEBAPIS.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class SurucuController : Controller
+    public class PlakaController : Controller
     {
-
-        IONSurucuService _surucuService;
-
-        public SurucuController(IONSurucuService surucuService)
+        private IONPlakaService _plakaService;
+        public PlakaController(IONPlakaService plakaService)
         {
-            _surucuService = surucuService;
+            _plakaService = plakaService;
         }
-
+        
         [HttpGet("getall")]
         public IActionResult GetAll()
         {
-            //Swagger
-            //Dependency chain --
-
             Thread.Sleep(1000);
 
-            var result = _surucuService.GetAll();
+            var result = _plakaService.GetAll();
             if (result.IsSuccess)
             {
                 return Ok(result);
@@ -40,12 +35,9 @@ namespace RevizeOzugucer.WEBAPIS.Controllers
         [HttpGet("getalldeleted")]
         public IActionResult GetAllDeleted()
         {
-            //Swagger
-            //Dependency chain --
-
             Thread.Sleep(1000);
 
-            var result = _surucuService.GetAllDeleted();
+            var result = _plakaService.GetAllDeleted();
             if (result.IsSuccess)
             {
                 return Ok(result);
@@ -57,12 +49,9 @@ namespace RevizeOzugucer.WEBAPIS.Controllers
         [HttpGet("getallnondeleted")]
         public IActionResult GetAllNonDeleted()
         {
-            //Swagger
-            //Dependency chain --
-
             Thread.Sleep(1000);
 
-            var result = _surucuService.GetAllNonDeleted();
+            var result = _plakaService.GetAllNonDeleted();
             if (result.IsSuccess)
             {
                 return Ok(result);
@@ -70,28 +59,12 @@ namespace RevizeOzugucer.WEBAPIS.Controllers
             return BadRequest(result);
 
         }
-
-        [HttpGet("getonlysurucunames")]
-        public IActionResult GetOnlySurucuNames()
-        {
-            //Swagger
-            //Dependency chain --
-
-            Thread.Sleep(1000);
-
-            var result = _surucuService.GetOnlySurucuNames();
-            if (result.IsSuccess)
-            {
-                return Ok(result);
-            }
-            return BadRequest(result);
-
-        }
+        
 
         [HttpGet("getbyid")]
         public IActionResult GetById(int id)
         {
-            var result = _surucuService.GetBySurucuId(id);
+            var result = _plakaService.GetByPlakaId(id);
             if (result.IsSuccess)
             {
                 return Ok(result);
@@ -101,9 +74,9 @@ namespace RevizeOzugucer.WEBAPIS.Controllers
         }
 
         [HttpPost("add")]
-        public IActionResult Add(ONSurucu surucu)
+        public IActionResult Add(ONPlaka onPlaka)
         {
-            var result = _surucuService.Add(surucu);
+            var result = _plakaService.Add(onPlaka);
             if (result.IsSuccess)
             {
                 return Ok(result);
@@ -114,7 +87,7 @@ namespace RevizeOzugucer.WEBAPIS.Controllers
         [HttpPost("delete")]
         public IActionResult Delete(int id)
         {
-            var result = _surucuService.Delete(id);
+            var result = _plakaService.Delete(id);
             if (result.IsSuccess)
             {
                 return Ok(result);
@@ -123,9 +96,9 @@ namespace RevizeOzugucer.WEBAPIS.Controllers
         }
 
         [HttpPost("update")]
-        public IActionResult Update(ONSurucu surucu)
+        public IActionResult Update(ONPlaka onPlaka)
         {
-            var result = _surucuService.Update(surucu);
+            var result = _plakaService.Update(onPlaka);
             if (result.IsSuccess)
             {
                 return Ok(result);

@@ -29,7 +29,7 @@ namespace RevizeOzugucer.WEBAPIS.Controllers
             Thread.Sleep(1000);
 
             var result = _irsaliyeDetayService.GetAll();
-            if (result.Success)
+            if (result.IsSuccess)
             {
                 return Ok(result);
             }
@@ -45,7 +45,7 @@ namespace RevizeOzugucer.WEBAPIS.Controllers
             Thread.Sleep(1000);
 
             var result = _irsaliyeDetayService.GetAllDeleted();
-            if (result.Success)
+            if (result.IsSuccess)
             {
                 return Ok(result);
             }
@@ -62,7 +62,7 @@ namespace RevizeOzugucer.WEBAPIS.Controllers
             Thread.Sleep(1000);
 
             var result = _irsaliyeDetayService.GetAllNonDeleted();
-            if (result.Success)
+            if (result.IsSuccess)
             {
                 return Ok(result);
             }
@@ -74,7 +74,7 @@ namespace RevizeOzugucer.WEBAPIS.Controllers
         public IActionResult GetById(int id)
         {
             var result = _irsaliyeDetayService.GetByIrsaliyeDetayId(id);
-            if (result.Success)
+            if (result.IsSuccess)
             {
                 return Ok(result);
             }
@@ -86,7 +86,7 @@ namespace RevizeOzugucer.WEBAPIS.Controllers
         public IActionResult Add(ONIrsaliyeDetay irsaliyeDetay)
         {
             var result = _irsaliyeDetayService.Add(irsaliyeDetay);
-            if (result.Success)
+            if (result.IsSuccess)
             {
                 return Ok(result);
             }
@@ -97,7 +97,7 @@ namespace RevizeOzugucer.WEBAPIS.Controllers
         public IActionResult Delete(int id)
         {
             var result = _irsaliyeDetayService.Delete(id);
-            if (result.Success)
+            if (result.IsSuccess)
             {
                 return Ok(result);
             }
@@ -108,7 +108,7 @@ namespace RevizeOzugucer.WEBAPIS.Controllers
         public IActionResult Update(ONIrsaliyeDetay irsaliyeDetay)
         {
             var result = _irsaliyeDetayService.Update(irsaliyeDetay);
-            if (result.Success)
+            if (result.IsSuccess)
             {
                 return Ok(result);
             }

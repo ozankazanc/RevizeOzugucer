@@ -44,5 +44,15 @@ namespace RevizeOzugucer.Business.Constant
 
 
         }
+
+        public static class Plaka
+        {
+            public static string PlakaAdded =   "Plaka eklendi.";
+            public static string PlakaDeleted = "Plaka silindi.";
+            public static string PlakaUpdated = "Plaka güncellendi.";
+            public static string PlakaGetAll =  "Plakalar getirildi.";
+            public static string PlakaGet =     "Plaka getirildi.";
+            public static string PlakaNotFound ="Plaka bulunamadı.";
+        }
     }
 }
