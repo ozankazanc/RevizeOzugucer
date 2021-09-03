@@ -59,7 +59,18 @@ namespace RevizeOzugucer.WEBAPIS.Controllers
             return BadRequest(result);
 
         }
-        
+
+        [HttpGet("getbyplakaarac")]
+        public IActionResult GetByPlakaArac(string plaka)
+        {
+            var result = _plakaService.GetByPlakaArac(plaka);
+            if (result.IsSuccess)
+            {
+                return Ok(result);
+            }
+
+            return BadRequest(result);
+        }
 
         [HttpGet("getbyid")]
         public IActionResult GetById(int id)

@@ -17,13 +17,16 @@ namespace RevizeOzugucer.Business.Concrete
         public ONPlakaManager(IONPlakaDal plakaDal)
         {
             _plakaDal = plakaDal;
-            
+
         }
 
         public IResult Add(ONPlaka plaka)
         {
+            //plaka girişi yapılırken boşluk atılırsa alınsın.
+            plaka.PlakaArac = plaka.PlakaArac.Replace(" ","").ToUpper();
+            
             _plakaDal.Add(plaka);
-
+            
             return new SuccessResult(Messages.Plaka.PlakaAdded);
         }
 
@@ -35,7 +38,7 @@ namespace RevizeOzugucer.Business.Concrete
         public IResult Delete(int id)
         {
             var result = GetByPlakaId(id);
-            
+
             result.Data.Sil = true;
             _plakaDal.Update(result.Data);
 
@@ -55,6 +58,18 @@ namespace RevizeOzugucer.Business.Concrete
         public IDataResult<List<ONPlaka>> GetAllNonDeleted()
         {
             return new SuccessDataResult<List<ONPlaka>>(_plakaDal.GetAll(x => x.Sil == false), Messages.Plaka.PlakaGetAll);
+        }
+
+        public IDataResult<ONPlaka> GetByPlakaArac(string plaka)
+        {
+            var result = _plakaDal.Get(x => x.PlakaArac == plaka);
+
+            if (result == null)
+            {
+                return new ErrorDataResult<ONPlaka>(data: null, Messages.Plaka.PlakaNotFound);
+            }
+
+            return new SuccessDataResult<ONPlaka>(result, Messages.Plaka.PlakaGet);
         }
 
         public IDataResult<ONPlaka> GetByPlakaId(int id)
