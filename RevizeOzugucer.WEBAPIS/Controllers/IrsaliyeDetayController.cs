@@ -26,7 +26,7 @@ namespace RevizeOzugucer.WEBAPIS.Controllers
             //Swagger
             //Dependency chain --
 
-            Thread.Sleep(1000);
+            ////Thread.Sleep(1000);
 
             var result = _irsaliyeDetayService.GetAll();
             if (result.IsSuccess)
@@ -42,7 +42,7 @@ namespace RevizeOzugucer.WEBAPIS.Controllers
             //Swagger
             //Dependency chain --
 
-            Thread.Sleep(1000);
+            ////Thread.Sleep(1000);
 
             var result = _irsaliyeDetayService.GetAllDeleted();
             if (result.IsSuccess)
@@ -59,7 +59,7 @@ namespace RevizeOzugucer.WEBAPIS.Controllers
             //Swagger
             //Dependency chain --
 
-            Thread.Sleep(1000);
+            ////Thread.Sleep(1000);
 
             var result = _irsaliyeDetayService.GetAllNonDeleted();
             if (result.IsSuccess)
@@ -70,10 +70,10 @@ namespace RevizeOzugucer.WEBAPIS.Controllers
 
         }
 
-        [HttpGet("getbyid")]
+        [HttpGet("get")]
         public IActionResult GetById(int id)
         {
-            var result = _irsaliyeDetayService.GetByIrsaliyeDetayId(id);
+            var result = _irsaliyeDetayService.Get(id);
             if (result.IsSuccess)
             {
                 return Ok(result);
@@ -112,6 +112,17 @@ namespace RevizeOzugucer.WEBAPIS.Controllers
             {
                 return Ok(result);
             }
+            return BadRequest(result);
+        }
+        [HttpGet("getbyirsaliyeid")]
+        public IActionResult GetByIrsaliyeId(int id)
+        {
+            var result = _irsaliyeDetayService.GetByIrsaliyeId(id);
+            if (result.IsSuccess)
+            {
+                return Ok(result);
+            }
+
             return BadRequest(result);
         }
     }

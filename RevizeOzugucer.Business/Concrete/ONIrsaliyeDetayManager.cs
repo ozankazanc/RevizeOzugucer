@@ -32,7 +32,7 @@ namespace RevizeOzugucer.Business.Concrete
 
         public IResult Delete(int id)
         {
-            var result = GetByIrsaliyeDetayId(id);
+            var result = Get(id);
 
             result.Data.Sil = true;
             _irsaliyeDetayDal.Update(result.Data);
@@ -55,7 +55,7 @@ namespace RevizeOzugucer.Business.Concrete
             return new SuccessDataResult<List<ONIrsaliyeDetay>>(_irsaliyeDetayDal.GetAll(x => x.Sil == false), Messages.Surucu.SurucuGetAll);
         }
 
-        public IDataResult<ONIrsaliyeDetay> GetByIrsaliyeDetayId(int id)
+        public IDataResult<ONIrsaliyeDetay> Get(int id)
         {
             var result = _irsaliyeDetayDal.Get(x => x.IrsaliyeDetayId == id);
 

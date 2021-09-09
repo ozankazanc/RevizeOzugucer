@@ -11,7 +11,7 @@ namespace RevizeOzugucer.Business.Abstract
         IDataResult<List<ONPlaka>> GetAll();
         IDataResult<List<ONPlaka>> GetAllNonDeleted();
         IDataResult<List<ONPlaka>> GetAllDeleted();
-        IDataResult<ONPlaka> GetByPlakaId(int id);
+        IDataResult<ONPlaka> Get(int id);
         IDataResult<ONPlaka> GetByPlakaArac(string plaka);
         IDataResult<int> Count();
         IResult Add(ONPlaka plaka);

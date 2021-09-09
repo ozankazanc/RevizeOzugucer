@@ -12,7 +12,7 @@ namespace RevizeOzugucer.Business.Abstract
         IDataResult<List<ONSurucu>> GetAllNonDeleted();
         IDataResult<List<ONSurucu>> GetAllDeleted();
         IDataResult<List<string>> GetOnlySurucuNames();
-        IDataResult<ONSurucu> GetBySurucuId(int id);
+        IDataResult<ONSurucu> Get(int id);
         IDataResult<int> Count();
         IResult Add(ONSurucu surucu);
         IResult Update(ONSurucu surucu);

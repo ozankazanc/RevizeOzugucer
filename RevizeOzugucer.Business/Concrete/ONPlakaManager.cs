@@ -37,7 +37,7 @@ namespace RevizeOzugucer.Business.Concrete
 
         public IResult Delete(int id)
         {
-            var result = GetByPlakaId(id);
+            var result = Get(id);
 
             result.Data.Sil = true;
             _plakaDal.Update(result.Data);
@@ -72,7 +72,7 @@ namespace RevizeOzugucer.Business.Concrete
             return new SuccessDataResult<ONPlaka>(result, Messages.Plaka.PlakaGet);
         }
 
-        public IDataResult<ONPlaka> GetByPlakaId(int id)
+        public IDataResult<ONPlaka> Get(int id)
         {
             var result = _plakaDal.Get(x => x.PlakaId == id);
 

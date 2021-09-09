@@ -22,7 +22,7 @@ namespace RevizeOzugucer.WEBAPIS.Controllers
         [HttpGet("getall")]
         public IActionResult GetAll()
         {
-            Thread.Sleep(1000);
+            //Thread.Sleep(1000);
 
             var result = _plakaService.GetAll();
             if (result.IsSuccess)
@@ -35,7 +35,7 @@ namespace RevizeOzugucer.WEBAPIS.Controllers
         [HttpGet("getalldeleted")]
         public IActionResult GetAllDeleted()
         {
-            Thread.Sleep(1000);
+            //Thread.Sleep(1000);
 
             var result = _plakaService.GetAllDeleted();
             if (result.IsSuccess)
@@ -49,7 +49,7 @@ namespace RevizeOzugucer.WEBAPIS.Controllers
         [HttpGet("getallnondeleted")]
         public IActionResult GetAllNonDeleted()
         {
-            Thread.Sleep(1000);
+            //Thread.Sleep(1000);
 
             var result = _plakaService.GetAllNonDeleted();
             if (result.IsSuccess)
@@ -72,10 +72,10 @@ namespace RevizeOzugucer.WEBAPIS.Controllers
             return BadRequest(result);
         }
 
-        [HttpGet("getbyid")]
+        [HttpGet("get")]
         public IActionResult GetById(int id)
         {
-            var result = _plakaService.GetByPlakaId(id);
+            var result = _plakaService.Get(id);
             if (result.IsSuccess)
             {
                 return Ok(result);

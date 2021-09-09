@@ -23,7 +23,7 @@ namespace RevizeOzugucer.Business.Constant
             public static string IrsaliyeAdded = "Irsaliye eklendi.";
             public static string IrsaliyeDeleted = "Irsaliye silindi.";
             public static string IrsaliyeUpdated = "Irsaliye güncellendi.";
-            public static string IrsaliyeGetAll = "Irsaliye getirildi.";
+            public static string IrsaliyeGetAll = "Irsaliyeler getirildi.";
             public static string IrsaliyeGet = "Irsaliye getirildi.";
             public static string IrsaliyeGetLastId = "Son Irsaliye Id getirildi.";
             public static string IrsaliyeGetPlakas = "Plakalar getirildi.";

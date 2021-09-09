@@ -12,7 +12,7 @@ namespace RevizeOzugucer.Business.Abstract
         IDataResult<List<ONIrsaliyeDetay>> GetAllNonDeleted();
         IDataResult<List<ONIrsaliyeDetay>> GetAllDeleted();
         IDataResult<List<ONIrsaliyeDetay>> GetByIrsaliyeId(int id);
-        IDataResult<ONIrsaliyeDetay> GetByIrsaliyeDetayId(int id);
+        IDataResult<ONIrsaliyeDetay> Get(int id);
         IDataResult<int> Count();
         IResult Add(ONIrsaliyeDetay irsaliyeDetay);
         IResult Update(ONIrsaliyeDetay irsaliyeDetay);

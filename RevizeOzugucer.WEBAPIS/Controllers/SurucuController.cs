@@ -27,7 +27,7 @@ namespace RevizeOzugucer.WEBAPIS.Controllers
             //Swagger
             //Dependency chain --
 
-            Thread.Sleep(1000);
+            //Thread.Sleep(1000);
 
             var result = _surucuService.GetAll();
             if (result.IsSuccess)
@@ -43,7 +43,7 @@ namespace RevizeOzugucer.WEBAPIS.Controllers
             //Swagger
             //Dependency chain --
 
-            Thread.Sleep(1000);
+            //Thread.Sleep(1000);
 
             var result = _surucuService.GetAllDeleted();
             if (result.IsSuccess)
@@ -60,7 +60,7 @@ namespace RevizeOzugucer.WEBAPIS.Controllers
             //Swagger
             //Dependency chain --
 
-            Thread.Sleep(1000);
+            //Thread.Sleep(1000);
 
             var result = _surucuService.GetAllNonDeleted();
             if (result.IsSuccess)
@@ -77,7 +77,7 @@ namespace RevizeOzugucer.WEBAPIS.Controllers
             //Swagger
             //Dependency chain --
 
-            Thread.Sleep(1000);
+            //Thread.Sleep(1000);
 
             var result = _surucuService.GetOnlySurucuNames();
             if (result.IsSuccess)
@@ -88,10 +88,10 @@ namespace RevizeOzugucer.WEBAPIS.Controllers
 
         }
 
-        [HttpGet("getbyid")]
+        [HttpGet("get")]
         public IActionResult GetById(int id)
         {
-            var result = _surucuService.GetBySurucuId(id);
+            var result = _surucuService.Get(id);
             if (result.IsSuccess)
             {
                 return Ok(result);

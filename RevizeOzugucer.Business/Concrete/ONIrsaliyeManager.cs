@@ -76,10 +76,11 @@ namespace RevizeOzugucer.Business.Concrete
             return new SuccessDataResult<int>(_irsaliyeDal.GetAll().Count);
         }
 
+        //TRANSACTION GECILECEK
         public IResult Delete(int id)
         {
             //master 
-            var result = GetByIrsaliyeId(id);
+            var result = Get(id);
 
             result.Data.Sil = true;
             _irsaliyeDal.Update(result.Data);
@@ -125,11 +126,11 @@ namespace RevizeOzugucer.Business.Concrete
             //    return new SuccessDataResult<List<string>>(plakasGrp, Messages.Irsaliye.IrsaliyeGetPlakas);
             //}
             //return new ErrorDataResult<List<string>>(null, Messages.Irsaliye.IrsaliyePlakasNotFound);
-           
+
             return new ErrorDataResult<List<string>>(null, Messages.Irsaliye.IrsaliyePlakasNotFound);
         }
 
-        public IDataResult<ONIrsaliye> GetByIrsaliyeId(int id)
+        public IDataResult<ONIrsaliye> Get(int id)
         {
             return new SuccessDataResult<ONIrsaliye>(_irsaliyeDal.Get(x => x.IrsaliyeId == id), Messages.Irsaliye.IrsaliyeGet);
         }
@@ -149,6 +150,53 @@ namespace RevizeOzugucer.Business.Concrete
             _irsaliyeDal.Update(irsaliye);
 
             return new SuccessResult(Messages.Irsaliye.IrsaliyeUpdated);
+        }
+
+        public IDataResult<List<IrsaliyeGenelDto>> ViewIrsaliyeGenel()
+        {
+            return new SuccessDataResult<List<IrsaliyeGenelDto>>(_irsaliyeDal.ViewIrsaliyeGenel(), Messages.Irsaliye.IrsaliyeGetAll);
+        }
+
+        public IDataResult<List<IrsaliyeGenelDto>> GetAllToday()
+        {
+            var startDate = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day);
+            var result = _irsaliyeDal.ViewIrsaliyeGenel().Where(x => x.KayitTarihi >= startDate && x.KayitTarihi <= DateTime.Now).ToList();
+
+            return new SuccessDataResult<List<IrsaliyeGenelDto>>(result, Messages.Irsaliye.IrsaliyeGetAll);
+        }
+
+        public IDataResult<List<IrsaliyeGenelDto>> GetAllThisWeek()
+        {
+            //ŞUAN Kİ SUNUCU KÜLTÜRÜ TÜRKİYE OLARAK AYARLI, EĞER DEĞİLSE GÜNE +1 EKLENMELİ 
+            var startDate = DateTime.Today.AddDays(-(int)DateTime.Today.DayOfWeek);
+            var result = _irsaliyeDal.ViewIrsaliyeGenel().Where(x => x.KayitTarihi >= startDate && x.KayitTarihi <= DateTime.Now).ToList();
+
+            return new SuccessDataResult<List<IrsaliyeGenelDto>>(result, Messages.Irsaliye.IrsaliyeGetAll);
+        }
+
+        public IDataResult<List<IrsaliyeGenelDto>> GetAllThisMonth()
+        {
+            var startDate = new DateTime(DateTime.Now.Year, DateTime.Now.Month, 1);
+            var result = _irsaliyeDal.ViewIrsaliyeGenel().Where(x => x.KayitTarihi >= startDate && x.KayitTarihi <= DateTime.Now).ToList();
+
+            return new SuccessDataResult<List<IrsaliyeGenelDto>>(result, Messages.Irsaliye.IrsaliyeGetAll);
+        }
+
+        public IDataResult<List<IrsaliyeGenelDto>> GetAllThisYear()
+        {
+            var startDate = new DateTime(DateTime.Now.Year, 1, 1);
+            var result = _irsaliyeDal.ViewIrsaliyeGenel().Where(x => x.KayitTarihi >= startDate && x.KayitTarihi <= DateTime.Now).ToList();
+
+            return new SuccessDataResult<List<IrsaliyeGenelDto>>(result, Messages.Irsaliye.IrsaliyeGetAll);
+        }
+
+        public IDataResult<List<IrsaliyeGenelDto>> GetAllBeetweenTwoDates(BetweenToDatesIrsaliye betweenToDatesIrsaliye)
+        {
+            var startDate = new DateTime(DateTime.Now.Year, 1, 1);
+            var result = _irsaliyeDal.ViewIrsaliyeGenel().Where
+                (x => x.KayitTarihi >= betweenToDatesIrsaliye.StartDate && x.KayitTarihi <= betweenToDatesIrsaliye.EndDate).ToList();
+
+            return new SuccessDataResult<List<IrsaliyeGenelDto>>(result, Messages.Irsaliye.IrsaliyeGetAll);
         }
     }
 }

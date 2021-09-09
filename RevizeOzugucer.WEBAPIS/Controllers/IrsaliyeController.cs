@@ -28,7 +28,7 @@ namespace RevizeOzugucer.WEBAPIS.Controllers
             //Swagger
             //Dependency chain --
 
-            Thread.Sleep(1000);
+            //Thread.Sleep(1000);
 
             var result = _irsaliyeService.GetAll();
             if (result.IsSuccess)
@@ -44,7 +44,7 @@ namespace RevizeOzugucer.WEBAPIS.Controllers
             //Swagger
             //Dependency chain --
 
-            Thread.Sleep(1000);
+           // //Thread.Sleep(1000);
 
             var result = _irsaliyeService.GetAllDeleted();
             if (result.IsSuccess)
@@ -61,7 +61,7 @@ namespace RevizeOzugucer.WEBAPIS.Controllers
             //Swagger
             //Dependency chain --
 
-            Thread.Sleep(1000);
+            //Thread.Sleep(1000);
 
             var result = _irsaliyeService.GetAllNonDeleted();
             if (result.IsSuccess)
@@ -75,7 +75,7 @@ namespace RevizeOzugucer.WEBAPIS.Controllers
         [HttpGet("getallplakas")]
         public IActionResult GetAllPlakas()
         {
-            Thread.Sleep(1000);
+            //Thread.Sleep(1000);
 
             var result = _irsaliyeService.GetAllPlakas();
             if (result.IsSuccess)
@@ -85,11 +85,10 @@ namespace RevizeOzugucer.WEBAPIS.Controllers
             return BadRequest(result);
         }
 
-
-        [HttpGet("getbyid")]
+        [HttpGet("get")]
         public IActionResult GetById(int id)
         {
-            var result = _irsaliyeService.GetByIrsaliyeId(id);
+            var result = _irsaliyeService.Get(id);
             if (result.IsSuccess)
             {
                 return Ok(result);
@@ -153,5 +152,101 @@ namespace RevizeOzugucer.WEBAPIS.Controllers
             }
             return BadRequest(result);
         }
+        //ViewIrsaliyeGenel
+
+        [HttpGet("viewirsaliyegenel")]
+        public IActionResult ViewIrsaliyeGenel()
+        {
+            var result = _irsaliyeService.ViewIrsaliyeGenel();
+            if (result.IsSuccess)
+            {
+                return Ok(result);
+            }
+
+            return BadRequest(result);
+        }
+
+        #region DatesRequest
+        [HttpGet("getalltoday")]
+        public IActionResult GetAllToday()
+        {
+            //Swagger
+            //Dependency chain --
+
+           // //Thread.Sleep(1000);
+
+            var result = _irsaliyeService.GetAllToday();
+            if (result.IsSuccess)
+            {
+                return Ok(result);
+            }
+            return BadRequest(result);
+
+        }
+
+        [HttpGet("getallthisweek")]
+        public IActionResult GetAllThisWeek()
+        {
+            //Swagger
+            //Dependency chain --
+
+          //  //Thread.Sleep(1000);
+
+            var result = _irsaliyeService.GetAllThisWeek();
+            if (result.IsSuccess)
+            {
+                return Ok(result);
+            }
+            return BadRequest(result);
+        }
+
+        [HttpGet("getallthismonth")]
+        public IActionResult GetAllThisMonth()
+        {
+            //Swagger
+            //Dependency chain --
+
+        //    //Thread.Sleep(1000);
+
+            var result = _irsaliyeService.GetAllThisMonth();
+            if (result.IsSuccess)
+            {
+                return Ok(result);
+            }
+            return BadRequest(result);
+        }
+
+        [HttpGet("getallthisyear")]
+        public IActionResult GetAllThisYear()
+        {
+            //Swagger
+            //Dependency chain --
+
+           // //Thread.Sleep(1000);
+
+            var result = _irsaliyeService.GetAllThisYear();
+            if (result.IsSuccess)
+            {
+                return Ok(result);
+            }
+            return BadRequest(result);
+        }
+
+        [HttpPost("getallbeetweentwodates")]
+        public IActionResult GetAllBeetweenTwoDates(BetweenToDatesIrsaliye betweenToDatesIrsaliye)
+        {
+            ////Thread.Sleep(1000);
+
+            var result = _irsaliyeService.GetAllBeetweenTwoDates(betweenToDatesIrsaliye);
+            if (result.IsSuccess)
+            {
+                return Ok(result);
+            }
+            return BadRequest(result);
+        }
+
+        #endregion
+
+
     }
 }

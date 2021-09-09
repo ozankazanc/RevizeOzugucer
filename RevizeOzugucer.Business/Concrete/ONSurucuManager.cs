@@ -33,7 +33,7 @@ namespace RevizeOzugucer.Business.Concrete
 
         public IResult Delete(int id)
         {
-            var result = GetBySurucuId(id);
+            var result = Get(id);
             
             result.Data.Sil = true;
             _surucuDal.Update(result.Data);
@@ -56,7 +56,7 @@ namespace RevizeOzugucer.Business.Concrete
             return new SuccessDataResult<List<ONSurucu>>(_surucuDal.GetAll(x => x.Sil == false), Messages.Surucu.SurucuGetAll);
         }
 
-        public IDataResult<ONSurucu> GetBySurucuId(int id)
+        public IDataResult<ONSurucu> Get(int id)
         {
             var result = _surucuDal.Get(x=>x.SurucuId == id);
 
