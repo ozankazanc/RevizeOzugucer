@@ -131,6 +131,17 @@ namespace RevizeOzugucer.WEBAPIS.Controllers
             return BadRequest(result);
         }
 
+        [HttpPost("updateirsaliyeandirsaliyedetay")]
+        public IActionResult UpdateIrsaliyeAndIrsaliyeDetay(IrsaliyeAndDetayDto irsaliyeAndDetayDto)
+        {
+            var result = _irsaliyeService.UpdateIrsaliyeAndIrsaliyeDetay(irsaliyeAndDetayDto);
+            if (result.IsSuccess)
+            {
+                return Ok(result);
+            }
+            return BadRequest(result);
+        }
+
         [HttpPost("delete")]
         public IActionResult Delete(int id)
         {
@@ -158,6 +169,17 @@ namespace RevizeOzugucer.WEBAPIS.Controllers
         public IActionResult ViewIrsaliyeGenel()
         {
             var result = _irsaliyeService.ViewIrsaliyeGenel();
+            if (result.IsSuccess)
+            {
+                return Ok(result);
+            }
+
+            return BadRequest(result);
+        }
+        [HttpGet("getirsaliyeanddetaygeneldto")]
+        public IActionResult GetIrsaliyeAndDetayGenelDto(int id)
+        {
+            var result = _irsaliyeService.GetIrsaliyeAndDetayGenelDto(id);
             if (result.IsSuccess)
             {
                 return Ok(result);

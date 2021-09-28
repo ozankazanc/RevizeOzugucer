@@ -29,6 +29,7 @@ namespace RevizeOzugucer.DataAccess.Concrete.EntityFramework
                                   SurucuAdSoyad = $"{su.SurucuAdi} {su.SurucuSoyadi}",
                                   Plaka = pl.PlakaArac,
                                   HesapNo = irsaliye.HesapNo,
+                                  IrsaliyeTarihi = irsaliye.IrsaliyeTarihi,
                                   VergiDairesi = irsaliye.VergiDairesi,
                                   KayitTarihi = irsaliye.KayitTarihi,
                                   DegistirmeTarihi = irsaliye.DegistirmeTarihi

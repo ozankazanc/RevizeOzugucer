@@ -112,9 +112,9 @@ namespace RevizeOzugucer.WEBAPIS.Controllers
         }
 
         [HttpPost("delete")]
-        public IActionResult Delete(int id)
+        public IActionResult Delete(ONSurucu onSurucu)
         {
-            var result = _surucuService.Delete(id);
+            var result = _surucuService.Delete(onSurucu.SurucuId);
             if (result.IsSuccess)
             {
                 return Ok(result);

@@ -93,7 +93,7 @@ namespace RevizeOzugucer.Business.Concrete
 
         public IDataResult<int> GetLastId()
         {
-            return new SuccessDataResult<int>(_plakaDal.GetAll().LastOrDefault().PlakaId, Messages.Plaka.IrsaliyeGetLastId);
+            return new SuccessDataResult<int>(_plakaDal.GetAll().LastOrDefault().PlakaId, Messages.Plaka.PlakaNotGetLastId);
         }
     }
 }

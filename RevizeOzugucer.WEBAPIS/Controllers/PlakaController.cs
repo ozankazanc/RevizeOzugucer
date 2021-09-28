@@ -96,9 +96,9 @@ namespace RevizeOzugucer.WEBAPIS.Controllers
         }
 
         [HttpPost("delete")]
-        public IActionResult Delete(int id)
+        public IActionResult Delete(ONPlaka onPlaka)
         {
-            var result = _plakaService.Delete(id);
+            var result = _plakaService.Delete(onPlaka.PlakaId);
             if (result.IsSuccess)
             {
                 return Ok(result);

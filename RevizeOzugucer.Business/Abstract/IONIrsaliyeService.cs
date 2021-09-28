@@ -26,16 +26,14 @@ namespace RevizeOzugucer.Business.Abstract
         /// <param name="listIrsaliyeDetay"></param>
         /// <returns></returns>
         IResult AddIrsaliyeAndIrsaliyeDetay(IrsaliyeAndDetayDto irsaliyeAndDetayDto);
+        IResult UpdateIrsaliyeAndIrsaliyeDetay(IrsaliyeAndDetayDto irsaliyeAndDetayDto);
         IDataResult<List<IrsaliyeGenelDto>> ViewIrsaliyeGenel();
         IDataResult<List<IrsaliyeGenelDto>> GetAllToday();
         IDataResult<List<IrsaliyeGenelDto>> GetAllThisWeek();
         IDataResult<List<IrsaliyeGenelDto>> GetAllThisMonth();
         IDataResult<List<IrsaliyeGenelDto>> GetAllThisYear();
         IDataResult<List<IrsaliyeGenelDto>> GetAllBeetweenTwoDates(BetweenToDatesIrsaliye betweenToDatesIrsaliye);
-
-
-
-
+        IDataResult<IrsaliyeAndDetayGenelDto> GetIrsaliyeAndDetayGenelDto(int id);
 
     }
 }

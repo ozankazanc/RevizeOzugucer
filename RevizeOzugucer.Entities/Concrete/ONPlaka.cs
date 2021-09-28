@@ -10,6 +10,9 @@ namespace RevizeOzugucer.Entities.Concrete
     {
         [Key]
         public int PlakaId { get; set; }
+        public string AracMarka { get; set; }
+        public string AracModel { get; set; }
+        public string AracYili { get; set; }
         public string PlakaArac { get; set; }
         public DateTime KayitTarihi { get; set; } = DateTime.Now;
         public DateTime DegistirmeTarihi { get; set; } = DateTime.Now;

@@ -14,6 +14,7 @@ namespace RevizeOzugucer.Entities.Concrete
         public int PlakaId { get; set; }
         public string HesapNo { get; set; }
         public string VergiDairesi { get; set; }
+        public DateTime IrsaliyeTarihi { get; set; }
         public DateTime KayitTarihi { get; set; } = DateTime.Now;
         public DateTime DegistirmeTarihi { get; set; } = DateTime.Now;
         public bool Sil { get; set; }

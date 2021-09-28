@@ -17,12 +17,14 @@ namespace RevizeOzugucer.Business.Concrete
         private IONIrsaliyeDal _irsaliyeDal;
         private IONIrsaliyeDetayService _irsaliyeDetayService;
         private IONPlakaService _plakaService;
+        private IONSurucuService _surucuService;
 
-        public ONIrsaliyeManager(IONIrsaliyeDal irsaliyeDal, IONIrsaliyeDetayService irsaliyeDetayService, IONPlakaService plakaService)
+        public ONIrsaliyeManager(IONIrsaliyeDal irsaliyeDal, IONIrsaliyeDetayService irsaliyeDetayService, IONPlakaService plakaService, IONSurucuService surucuService)
         {
             _irsaliyeDal = irsaliyeDal;
             _irsaliyeDetayService = irsaliyeDetayService;
             _plakaService = plakaService;
+            _surucuService = surucuService;
         }
 
         public IResult Add(ONIrsaliye irsaliye)
@@ -53,6 +55,7 @@ namespace RevizeOzugucer.Business.Concrete
                 HesapNo = irsaliyeAndDetayDto.HesapNo,
                 VergiDairesi = irsaliyeAndDetayDto.VergiDairesi,
                 PlakaId = _plakaService.GetLastId().Data,
+                IrsaliyeTarihi = irsaliyeAndDetayDto.IrsaliyeTarihi,
                 KayitTarihi = irsaliyeAndDetayDto.KayitTarihi,
                 DegistirmeTarihi = irsaliyeAndDetayDto.DegistirmeTarihi,
                 Sil = irsaliyeAndDetayDto.Sil
@@ -69,6 +72,54 @@ namespace RevizeOzugucer.Business.Concrete
             }
 
             return new SuccessResult(Messages.Irsaliye.IrsaliyeAdded);
+        }
+
+        [TransactionScopeAspect]
+        public IResult UpdateIrsaliyeAndIrsaliyeDetay(IrsaliyeAndDetayDto irsaliyeAndDetayDto)
+        {
+            var resultIrsaliye = Get(irsaliyeAndDetayDto.IrsaliyeId);
+
+            if (resultIrsaliye.IsSuccess)
+            {
+                ONIrsaliye irsaliye = resultIrsaliye.Data;
+                irsaliye.IrsaliyeId = irsaliyeAndDetayDto.IrsaliyeId;
+                irsaliye.SurucuId = irsaliyeAndDetayDto.SurucuId;
+                irsaliye.PlakaId = irsaliyeAndDetayDto.PlakaId;
+                irsaliye.HesapNo = irsaliyeAndDetayDto.HesapNo;
+                irsaliye.VergiDairesi = irsaliyeAndDetayDto.VergiDairesi;
+                irsaliye.IrsaliyeTarihi = irsaliyeAndDetayDto.IrsaliyeTarihi;
+                irsaliye.DegistirmeTarihi = irsaliyeAndDetayDto.DegistirmeTarihi;
+
+                Update(irsaliye);
+            }
+            else
+            {
+                return new ErrorResult(Messages.Irsaliye.IrsaliyeNotUpdated);
+            }
+
+            var resultIrsaliyeDetay = _irsaliyeDetayService.GetByIrsaliyeId(irsaliyeAndDetayDto.IrsaliyeId);
+            if (resultIrsaliyeDetay.IsSuccess)
+            {
+                var listIrsaliyeDetay = resultIrsaliyeDetay.Data;
+
+                foreach (var irsaliyeDetay in listIrsaliyeDetay)
+                {
+                    irsaliyeDetay.Sil = true;
+                    _irsaliyeDetayService.Update(irsaliyeDetay);
+                }
+            }
+            else
+            {
+                return new ErrorResult(Messages.IrsaliyeDetay.IrsaliyeDetayNotUpdated);
+            }
+
+            foreach (var irsaliyeDetay in irsaliyeAndDetayDto.listIrsaliyeDetay)
+            {
+                irsaliyeDetay.IrsaliyeDetayId = 0;
+                _irsaliyeDetayService.Add(irsaliyeDetay);
+            }
+
+            return new SuccessResult(Messages.Irsaliye.IrsaliyeUpdated);
         }
 
         public IDataResult<int> Count()
@@ -197,6 +248,41 @@ namespace RevizeOzugucer.Business.Concrete
                 (x => x.KayitTarihi >= betweenToDatesIrsaliye.StartDate && x.KayitTarihi <= betweenToDatesIrsaliye.EndDate).ToList();
 
             return new SuccessDataResult<List<IrsaliyeGenelDto>>(result, Messages.Irsaliye.IrsaliyeGetAll);
+        }
+
+        public IDataResult<IrsaliyeAndDetayGenelDto> GetIrsaliyeAndDetayGenelDto(int id)
+        {
+            var irsaliye = Get(id);
+            var irsaliyeDetay = _irsaliyeDetayService.GetByIrsaliyeId(id);
+
+            if (irsaliye.Data == null || irsaliyeDetay.Data == null)
+            {
+                return new ErrorDataResult<IrsaliyeAndDetayGenelDto>(Messages.Irsaliye.IrsaliyeNotFound);
+            }
+
+            var surucu = _surucuService.Get(irsaliye.Data.SurucuId);
+            var plaka = _plakaService.Get(irsaliye.Data.PlakaId);
+
+            if (surucu.Data == null || plaka.Data == null)
+            {
+                return new ErrorDataResult<IrsaliyeAndDetayGenelDto>(Messages.Irsaliye.IrsaliyeNotFound);
+            }
+
+            IrsaliyeAndDetayGenelDto irsaliyeAndDetayGenelDto = new IrsaliyeAndDetayGenelDto
+            {
+                IrsaliyeId = irsaliye.Data.IrsaliyeId,
+                HesapNo = irsaliye.Data.HesapNo,
+                VergiDairesi = irsaliye.Data.VergiDairesi,
+                IrsaliyeTarihi = irsaliye.Data.IrsaliyeTarihi,
+                KayitTarihi = irsaliye.Data.KayitTarihi,
+                DegistirmeTarihi = irsaliye.Data.DegistirmeTarihi,
+                Sil = irsaliye.Data.Sil,
+                Plaka = plaka.Data,
+                Surucu = surucu.Data,
+                IrsaliyeDetay = irsaliyeDetay.Data
+            };
+
+            return new SuccessDataResult<IrsaliyeAndDetayGenelDto>(irsaliyeAndDetayGenelDto, Messages.Irsaliye.IrsaliyeGet);
         }
     }
 }
